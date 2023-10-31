@@ -8,7 +8,8 @@
       ></v-img>
      </div>
      <div class="right-auth">
-      <Login></Login>
+      <Login @authChange="authCard" v-if="showLogin"></Login>
+      <Register @authChange="authCard" v-if="!showLogin"></Register>
      </div>
     </div>
 </template>
@@ -16,11 +17,23 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Login from '@/components/Login.vue';
+import Register from '@/components/Register.vue';
 
 export default defineComponent({
   name: 'Auth',
   components: {
-    Login
+    Login,
+    Register
+  },
+  data() {
+    return {
+      showLogin: true
+    }
+  },
+  methods:{
+    authCard(){
+      this.showLogin = !this.showLogin;
+    }
   }
 })
 </script>

@@ -1,57 +1,22 @@
 <template>
-    <div>
-    <v-sheet width="300" class="mx-auto">
-        <v-form v-model="valid">
-            <v-container>
-              <v-row>
-                <v-col
-                  cols="12"
-                  md="12"
-                >
-                  <v-text-field
-                    v-model="firstname"
-                    :rules="nameRules"
-                    :counter="10"
-                    label="First name"
-                    required
-                    hide-details
-                  ></v-text-field>
-                </v-col>
-        
-                <v-col
-                  cols="12"
-                  md="12"
-                >
-                  <v-text-field
-                    v-model="lastname"
-                    :rules="nameRules"
-                    :counter="10"
-                    label="Last name"
-                    hide-details
-                    required
-                  ></v-text-field>
-                </v-col>
-        
-                <v-col
-                  cols="12"
-                  md="12"
-                >
-                  <v-text-field
-                    v-model="email"
-                    :rules="emailRules"
-                    label="E-mail"
-                    hide-details
-                    required
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-form>
-          <v-btn variant="outlined">
-            Login
-          </v-btn>
-    </v-sheet>
-    </div>
+  <v-sheet width="300" class="mx-auto">
+    <v-form fast-fail @submit.prevent>
+      <v-text-field
+        v-model="email"
+        label="E-mail"
+        :rules="emailRules"
+      ></v-text-field>
+
+      <v-text-field
+        v-model="password"
+        label="Password"
+        :rules="passwordRules"
+      ></v-text-field>
+
+      <v-btn type="submit" block class="mt-2">Submit</v-btn>
+    </v-form>
+    <v-btn block class="mt-2" @click="emitAuthChange">Register</v-btn>
+  </v-sheet>
 </template>
 
 
@@ -60,15 +25,20 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
     name:'Login',
+    emits: ["authChange"],
     data(){
         return{
             teste: 'teste',
             pros: false
         }
+    },
+    methods: {
+      emitAuthChange(){
+        this.$emit("authChange")
+      }
     }
 })
 </script>
 
 <style>
-
 </style>
