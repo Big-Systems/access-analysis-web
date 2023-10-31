@@ -1,17 +1,13 @@
 <template>
   <div class="auth">
-     <div class="left-auth">
-      <v-img      
-        aspect-ratio="16/9"
-        cover
-        src="../assets/login-img.svg"
-      ></v-img>
-     </div>
-     <div class="right-auth">
+    <div class="left-auth">
+      <v-img aspect-ratio="16/9" cover src="../assets/login-img.svg"></v-img>
+    </div>
+    <div class="right-auth">
       <Login @authChange="authCard" v-if="showLogin"></Login>
       <Register @authChange="authCard" v-if="!showLogin"></Register>
-     </div>
     </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -30,8 +26,8 @@ export default defineComponent({
       showLogin: true
     }
   },
-  methods:{
-    authCard(){
+  methods: {
+    authCard() {
       this.showLogin = !this.showLogin;
     }
   }
@@ -39,23 +35,21 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
-.auth{
+.auth {
   background: #F1F3F6;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.left-auth{
- width: 70%;
- height: 10%;
+.left-auth {
+  width: 70%;
+  height: 10%;
 }
 
-.right-auth{
+.right-auth {
   width: 30%;
   height: 100vh;
   background: #FFF;
 }
-
 </style>

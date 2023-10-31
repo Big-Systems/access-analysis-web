@@ -11,11 +11,10 @@ export interface userState {
 export const user: Module<userState, State> = {
   actions: {
     [LOGIN](state, user: IUser) {
-        return http.post("/user", user);
+      return http.post("/user", user);
     },
     [REGISTER](state, user: IUser) {
-        console.log('teste')
-    return http.post("/user", user);
+      return http.post("/user", user);
     },
   },
 };

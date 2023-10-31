@@ -1,21 +1,11 @@
 <template>
-  <v-sheet width="300" class="mx-auto">
+  <v-sheet width="300" class="mx-auto teste">
     <v-form fast-fail @submit.prevent>
-        <v-text-field
-          v-model="userName"
-          label="User"
-        ></v-text-field>
-    
-        <v-text-field
-          v-model="email"
-          label="E-mail"
-        ></v-text-field>
-    
-        <v-text-field
-          v-model="password"
-          label="Password"
-        ></v-text-field>   
-        <v-btn type="submit" block class="mt-2" @click="register">Submit</v-btn>
+      <v-text-field v-model="userName" label="User name"></v-text-field>
+      <v-text-field v-model="email" label="E-mail address"></v-text-field>
+      <v-text-field v-model="password" label="Password"></v-text-field>
+      <v-text-field v-model="confirmPassword" label="Confirm password"></v-text-field>
+      <v-btn type="submit" block class="mt-2" @click="register">Create Account</v-btn>
     </v-form>
     <v-btn block class="mt-2" @click="emitAuthChange">Login</v-btn>
   </v-sheet>
@@ -45,12 +35,13 @@ export default defineComponent({
     const userName = ref('')
     const email = ref('')
     const password = ref('')
+    const confirmPassword = ref('')
 
     const register = function () {
-    const user: IUser = {
+      const user: IUser = {
         name: userName.value,
         email: email.value
-    }
+      }
       store.dispatch(REGISTER, user);
     };
 
@@ -59,9 +50,14 @@ export default defineComponent({
       userName,
       email,
       password,
+      confirmPassword
     };
   },
 });
 </script>
 
-<style></style>
+<style scoped>
+.teste {
+  margin-top: 150px;
+}
+</style>
